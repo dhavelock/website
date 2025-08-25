@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer utilities {
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .prose {
+    @apply text-gray-700 dark:text-gray-300;
+  }
+  
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    @apply text-gray-900 dark:text-white font-semibold;
+  }
+  
+  .prose p {
+    @apply leading-relaxed;
+  }
+  
+  .prose ul {
+    @apply list-disc list-inside;
+  }
+  
+  .prose li {
+    @apply mb-1;
+  }
+  
+  .dark .prose {
+    @apply text-gray-300;
+  }
+  
+  .dark .prose h1,
+  .dark .prose h2,
+  .dark .prose h3,
+  .dark .prose h4,
+  .dark .prose h5,
+  .dark .prose h6 {
+    @apply text-white;
+  }
+}
