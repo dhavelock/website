@@ -3,13 +3,14 @@ import Link from 'next/link'
 import { getPostById, formatDate } from '@/lib/posts'
 
 interface PostPageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
-export default function PostPage({ params }: PostPageProps) {
-  const post = getPostById(params.id)
+export default async function PostPage({ params }: PostPageProps) {
+  const { id } = await params
+  const post = getPostById(id)
 
   if (!post) {
     notFound()

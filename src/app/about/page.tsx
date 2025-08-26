@@ -7,11 +7,11 @@ export default function AboutPage() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            About Me
+            About Me 👋
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          {/* <p className="text-lg text-gray-600 dark:text-gray-300">
             Software engineer passionate about AI and modern web development
-          </p>
+          </p> */}
         </div>
 
         {/* Main Content */}
@@ -24,24 +24,22 @@ export default function AboutPage() {
               </h2>
               <div className="prose prose-lg max-w-none dark:prose-invert">
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                  I'm Dylan Havelock, a software engineer with a passion for building AI-powered applications 
-                  and modern web experiences. With several years of experience in the tech industry, I've 
-                  worked on everything from small personal projects to large-scale enterprise applications.
+                  Hey, I’m Dylan. I started out as a software engineer and now work as a Solutions Engineer at Snyk, where I help engineering teams move fast without breaking things (or security).
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                  My journey in software development started with a curiosity about how technology can solve 
-                  real-world problems. Today, I focus on the intersection of AI and web development, 
-                  exploring how machine learning can enhance user experiences and create more intelligent applications.
+                  Most days, you’ll find me teaming up with customers -- digging into their challenges, sketching out what a solution could look like, and seeing it through from idea to implementation.
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                  I also work side-by-side with our sales team, turning technical wins into business wins, all while building relationships that last longer than the contract.
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  When I'm not coding, you can find me writing about technology, contributing to open-source 
-                  projects, or exploring the latest developments in AI and machine learning.
+                  Outside of work, I’m usually writing about tech, poking around in the world of AI and machine learning, or training for my next triathlon here in Vancounver.
                 </p>
               </div>
             </section>
 
             {/* Skills */}
-            <section className="mb-12">
+            {/* <section className="mb-12">
               <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
                 Skills & Technologies
               </h2>
@@ -107,10 +105,10 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-            </section>
+            </section> */}
 
             {/* Experience */}
-            <section className="mb-12">
+            {/* <section className="mb-12">
               <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
                 Experience & Focus Areas
               </h2>
@@ -143,10 +141,10 @@ export default function AboutPage() {
                   </p>
                 </div>
               </div>
-            </section>
+            </section> */}
 
             {/* Writing & Sharing */}
-            <section className="mb-12">
+            {/* <section className="mb-12">
               <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
                 Writing & Knowledge Sharing
               </h2>
@@ -169,7 +167,7 @@ export default function AboutPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>
-            </section>
+            </section> */}
 
             {/* Get in Touch */}
             <section>
@@ -178,11 +176,11 @@ export default function AboutPage() {
               </h2>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                 I'm always interested in discussing new opportunities, collaborations, or just chatting about 
-                technology. Feel free to reach out through any of these channels:
+                technology. Feel free to reach out!
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="https://github.com/dylanhavelock"
+                  href="https://github.com/dhavelock"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors"
@@ -193,7 +191,7 @@ export default function AboutPage() {
                   GitHub
                 </a>
                 <a
-                  href="https://linkedin.com/in/dylanhavelock"
+                  href="https://linkedin.com/in/dylan-havelock"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"

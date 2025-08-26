@@ -14,8 +14,12 @@ export default function Home() {
               Hi, I'm <span className="text-blue-600 dark:text-blue-400">Dylan Havelock</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Software engineer passionate about building AI-powered applications and modern web experiences. 
-              I write about technology, share insights from my projects, and explore the intersection of AI and software development.
+              Part software engineer, part solutions engineer, 
+              <br/>full-time fixer of problems.
+              </p> <br/>
+              
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              I write about technology, insights from my projects, <br/> and general musings about the world.
             </p>
             <div className="mt-8 flex justify-center space-x-4">
               <Link 
@@ -112,9 +116,6 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
               Connect & Explore
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
-              Let's build something amazing together
-            </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -171,7 +172,7 @@ export default function Home() {
                 Let's discuss projects and opportunities
               </p>
               <a 
-                href="https://linkedin.com/in/dylanhavelock"
+                href="https://linkedin.com/in/dylan-havelock"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors"

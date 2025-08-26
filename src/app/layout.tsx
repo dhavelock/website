@@ -1,9 +1,67 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Roboto, Open_Sans, Poppins, Montserrat, JetBrains_Mono, Fira_Code, Source_Code_Pro, IBM_Plex_Mono, Space_Mono } from 'next/font/google'
 import './globals.css'
 import Link from 'next/link'
 
+// Choose one of these font combinations:
+
+// Option 1: Modern Tech Look (Inter - current)
 const inter = Inter({ subsets: ['latin'] })
+
+// Option 2: Clean & Professional (Roboto)
+// const roboto = Roboto({ 
+//   weight: ['300', '400', '500', '700'],
+//   subsets: ['latin'] 
+// })
+
+// Option 3: Friendly & Readable (Open Sans)
+// const openSans = Open_Sans({ 
+//   weight: ['300', '400', '500', '600', '700'],
+//   subsets: ['latin'] 
+// })
+
+// Option 4: Modern & Elegant (Poppins)
+const poppins = Poppins({ 
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ['latin'] 
+})
+
+// Option 5: Professional & Clean (Montserrat)
+// const montserrat = Montserrat({ 
+//   weight: ['300', '400', '500', '600', '700'],
+//   subsets: ['latin'] 
+// })
+
+// MONOSPACED FONT OPTIONS (Great for developer websites):
+
+// Option 6: JetBrains Mono (Excellent for code, very readable)
+const jetbrainsMono = JetBrains_Mono({ 
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ['latin'] 
+})
+
+// Option 7: Fira Code (Great for code, includes ligatures)
+const firaCode = Fira_Code({ 
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ['latin'] 
+})
+
+// Option 8: Source Code Pro (Adobe's monospace font)
+const sourceCodePro = Source_Code_Pro({ 
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ['latin'] 
+})
+
+// Option 9: IBM Plex Mono (Professional, clean)
+const ibmPlexMono = IBM_Plex_Mono({ 
+  weight: ['300', '400', '500', '600'],
+  subsets: ['latin'] 
+})
+
+const spaceMono = Space_Mono({ 
+  weight: ['400', '700'],
+  subsets: ['latin'] 
+})
 
 export const metadata: Metadata = {
   title: 'Dylan Havelock - Software Engineer',
@@ -17,7 +75,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100`}>
+      <body className={`${inter.className} bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white`}>
         <div className="min-h-screen flex flex-col">
           {/* Navigation */}
           <nav className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
@@ -40,7 +98,7 @@ export default function RootLayout({
                   </Link>
                   <div className="flex items-center space-x-4">
                     <a
-                      href="https://github.com/dylanhavelock"
+                      href="https://github.com/dhavelock"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
@@ -50,7 +108,7 @@ export default function RootLayout({
                       </svg>
                     </a>
                     <a
-                      href="https://linkedin.com/in/dylanhavelock"
+                      href="https://linkedin.com/in/dylan-havelock"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
@@ -74,7 +132,7 @@ export default function RootLayout({
           <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
             <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
               <div className="text-center text-gray-600 dark:text-gray-400">
-                <p>&copy; 2024 Dylan Havelock. Built with Next.js and Tailwind CSS.</p>
+                <p>&copy; 2025 Dylan Havelock. Built with Next.js and Tailwind CSS.</p>
               </div>
             </div>
           </footer>
