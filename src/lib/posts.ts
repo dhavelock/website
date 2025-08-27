@@ -152,6 +152,23 @@ Given the rate at which AI-powered dev tools are improving, I have a nagging sus
     date: '2025-06-12T12:32:00Z',
     tags: ['Best Practices', 'AI', 'Development'],
     featured: true
+  },
+  {
+    id: 'what-am-i-doing',
+    title: 'What am I doing here?',
+    excerpt: 'Good question...',
+    content: `
+What am I doing here? 
+
+That’s a good question. Does anyone *really* know what they’re doing anywhere?
+
+All jokes aside, this is a place where I can put my thoughts, share my projects, and write about tech topics I find interesting. It’s not meant to be that serious, so please don’t take it that way.
+
+If you do find anything I write here interesting, feel free to [shoot me a message](https://www.linkedin.com/in/dylan-havelock/) to chat more.
+    `,
+    date: '2025-06-05T13:00:00Z',
+    tags: ['Hello, World'],
+    featured: false
   }
 ];
 
