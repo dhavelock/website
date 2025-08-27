@@ -1,5 +1,8 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import type { Components } from 'react-markdown'
 import { getPostById, formatDate } from '@/lib/posts'
 
 interface PostPageProps {
@@ -16,35 +19,97 @@ export default async function PostPage({ params }: PostPageProps) {
     notFound()
   }
 
-  // Simple markdown to HTML conversion for basic formatting
-  const renderContent = (content: string) => {
-    return content
-      .split('\n')
-      .map((line, index) => {
-        // Headers
-        if (line.startsWith('# ')) {
-          return <h1 key={index} className="text-3xl font-bold text-gray-900 dark:text-white mt-8 mb-4">{line.substring(2)}</h1>
-        }
-        if (line.startsWith('## ')) {
-          return <h2 key={index} className="text-2xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">{line.substring(3)}</h2>
-        }
-        if (line.startsWith('### ')) {
-          return <h3 key={index} className="text-xl font-semibold text-gray-900 dark:text-white mt-4 mb-2">{line.substring(4)}</h3>
-        }
-        
-        // Lists
-        if (line.startsWith('- ')) {
-          return <li key={index} className="text-gray-700 dark:text-gray-300 mb-1">{line.substring(2)}</li>
-        }
-        
-        // Empty lines
-        if (line.trim() === '') {
-          return <br key={index} />
-        }
-        
-        // Regular paragraphs
-        return <p key={index} className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">{line}</p>
-      })
+  // Custom components for ReactMarkdown to maintain styling
+  const components: Components = {
+    h1: ({ children, ...props }) => (
+      <h1 {...props} className="text-3xl font-bold text-gray-900 dark:text-white mt-8 mb-4">{children}</h1>
+    ),
+    h2: ({ children, ...props }) => (
+      <h2 {...props} className="text-2xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">{children}</h2>
+    ),
+    h3: ({ children, ...props }) => (
+      <h3 {...props} className="text-xl font-semibold text-gray-900 dark:text-white mt-4 mb-2">{children}</h3>
+    ),
+    h4: ({ children, ...props }) => (
+      <h4 {...props} className="text-lg font-semibold text-gray-900 dark:text-white mt-3 mb-2">{children}</h4>
+    ),
+    h5: ({ children, ...props }) => (
+      <h5 {...props} className="text-base font-semibold text-gray-900 dark:text-white mt-2 mb-1">{children}</h5>
+    ),
+    h6: ({ children, ...props }) => (
+      <h6 {...props} className="text-sm font-semibold text-gray-900 dark:text-white mt-2 mb-1">{children}</h6>
+    ),
+    p: ({ children, ...props }) => (
+      <p {...props} className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">{children}</p>
+    ),
+    ul: ({ children, ...props }) => (
+      <ul {...props} className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-4 space-y-1">{children}</ul>
+    ),
+    ol: ({ children, ...props }) => (
+      <ol {...props} className="list-decimal list-inside text-gray-700 dark:text-gray-300 mb-4 space-y-1">{children}</ol>
+    ),
+    li: ({ children, ...props }) => (
+      <li {...props} className="text-gray-700 dark:text-gray-300">{children}</li>
+    ),
+    blockquote: ({ children, ...props }) => (
+      <blockquote {...props} className="border-l-4 border-blue-500 pl-4 italic text-gray-600 dark:text-gray-400 mb-4">{children}</blockquote>
+    ),
+    code: ({ children, className, ...props }) => {
+      const isInline = !className
+      if (isInline) {
+        return <code {...props} className="bg-gray-100 dark:bg-gray-700 px-1 py-0.5 rounded text-sm font-mono">{children}</code>
+      }
+      return (
+        <code {...props} className="block bg-gray-100 dark:bg-gray-700 p-4 rounded-lg text-sm font-mono overflow-x-auto">
+          {children}
+        </code>
+      )
+    },
+    pre: ({ children, ...props }) => (
+      <pre {...props} className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg overflow-x-auto mb-4">{children}</pre>
+    ),
+    a: ({ href, children, ...props }) => (
+      <a {...props} href={href} className="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">
+        {children}
+      </a>
+    ),
+    img: ({ src, alt, ...props }) => (
+      <img {...props} src={src} alt={alt} className="max-w-full h-auto rounded-lg shadow-md my-4" />
+    ),
+    table: ({ children, ...props }) => (
+      <div className="overflow-x-auto mb-4">
+        <table {...props} className="min-w-full border border-gray-300 dark:border-gray-600">{children}</table>
+      </div>
+    ),
+    thead: ({ children, ...props }) => (
+      <thead {...props} className="bg-gray-50 dark:bg-gray-700">{children}</thead>
+    ),
+    tbody: ({ children, ...props }) => (
+      <tbody {...props} className="divide-y divide-gray-300 dark:divide-gray-600">{children}</tbody>
+    ),
+    tr: ({ children, ...props }) => (
+      <tr {...props} className="hover:bg-gray-50 dark:hover:bg-gray-600">{children}</tr>
+    ),
+    th: ({ children, ...props }) => (
+      <th {...props} className="px-4 py-2 text-left text-sm font-medium text-gray-900 dark:text-white border-b border-gray-300 dark:border-gray-600">
+        {children}
+      </th>
+    ),
+    td: ({ children, ...props }) => (
+      <td {...props} className="px-4 py-2 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-300 dark:border-gray-600">
+        {children}
+      </td>
+    ),
+    hr: (props) => <hr {...props} className="border-gray-300 dark:border-gray-600 my-8" />,
+    strong: ({ children, ...props }) => (
+      <strong {...props} className="font-semibold text-gray-900 dark:text-white">{children}</strong>
+    ),
+    em: ({ children, ...props }) => (
+      <em {...props} className="italic text-gray-800 dark:text-gray-200">{children}</em>
+    ),
+    del: ({ children, ...props }) => (
+      <del {...props} className="line-through text-gray-500 dark:text-gray-400">{children}</del>
+    ),
   }
 
   return (
@@ -103,7 +168,12 @@ export default async function PostPage({ params }: PostPageProps) {
             {/* Content */}
             <div className="prose prose-lg max-w-none dark:prose-invert">
               <div className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                {renderContent(post.content)}
+                <ReactMarkdown 
+                  remarkPlugins={[remarkGfm]}
+                  components={components}
+                >
+                  {post.content}
+                </ReactMarkdown>
               </div>
             </div>
           </div>
