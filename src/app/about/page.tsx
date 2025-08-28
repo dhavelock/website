@@ -175,7 +175,7 @@ export default function AboutPage() {
                 Get in Touch
               </h2>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                I'm always interested in discussing new opportunities, collaborations, or just chatting about 
+                I&apos;m always interested in discussing new opportunities, collaborations, or just chatting about 
                 technology. Feel free to reach out!
               </p>
               <div className="flex flex-wrap gap-4">

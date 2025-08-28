@@ -4,7 +4,15 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import type { Components } from 'react-markdown'
-import { getPostById, formatDate } from '@/lib/posts'
+import { getPostById, getAllPosts, formatDate } from '@/lib/posts'
+
+// Generate static params for all posts at build time
+export async function generateStaticParams() {
+  const posts = getAllPosts()
+  return posts.map((post: { id: string }) => ({
+    id: post.id,
+  }))
+}
 
 interface PostPageProps {
   params: Promise<{
