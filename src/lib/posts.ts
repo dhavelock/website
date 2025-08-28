@@ -10,45 +10,10 @@ export interface Post {
 
 export const posts: Post[] = [
   {
-    id: 'building-ai-powered-applications',
-    title: 'Building AI-Powered Applications: Lessons Learned',
-    excerpt: 'My journey building AI applications and the key insights I\'ve gained along the way.',
-    content: `
-# Building AI-Powered Applications: Lessons Learned
-
-Building AI-powered applications has been an incredible journey filled with both challenges and breakthroughs. In this post, I'll share the key lessons I've learned while developing AI applications.
-
-## The Importance of Data Quality
-
-One of the most critical aspects of AI development is data quality. Garbage in, garbage out - this principle holds especially true in AI applications. I've found that spending time on data preprocessing and validation upfront saves countless hours of debugging later.
-
-## User Experience Matters
-
-AI applications need to be intuitive and user-friendly. Users shouldn't need to understand the underlying AI to benefit from it. I've learned to focus on creating seamless experiences that hide the complexity of AI while delivering clear value.
-
-## Iterative Development
-
-AI development is inherently iterative. Models need to be trained, tested, and refined continuously. I've adopted a rapid prototyping approach that allows for quick experimentation and validation of ideas.
-
-## Monitoring and Observability
-
-Once deployed, AI applications require careful monitoring. I've implemented comprehensive logging and monitoring systems to track model performance and user interactions.
-
-## The Future of AI Development
-
-As AI technology continues to evolve, I'm excited about the possibilities. The key is to stay curious, keep learning, and always focus on solving real problems for real users.
-    `,
-    date: '2024-01-15T10:30:00Z',
-    tags: ['AI', 'Development', 'Machine Learning'],
-    featured: true
-  },
-  {
     id: 'mcp-server-for-dummies',
     title: 'MCP Server for Dummies',
-    excerpt: '',
+    excerpt: 'Creating AI experiences is easier than you think.',
     content: `
-# MCP Server for Dummies
-
 Everyone is chatting up a storm about MCP and the possibilities that it unlocks for the future. What I don't think everyone understands is just how easy it is to automate and _AI-ify_ existing experiences right now. This post walks through how we can take the traditional APIs we already have and create a delightful experiences.
 
 ## Example: Interfacing with our CRM
@@ -83,16 +48,9 @@ mcp = FastMCP("My MCP Server")
 @mcp.tool()
 def my_mcp_tool():
     """Detailed description about what this tool (in this case your API endpoint) does."""
-    
-    # The API endpoint you are wrapping
-    url = "https://your_api_url.com/api"
 
-    # Fill in the necessary headers and body
-    data = {}
-    headers = {}
-
-    # Make the API request
-    response = requests.post(url, headers=headers, json=data)
+    # Make the API request. Fill in the blanks where needed.
+    response = requests.post("https://your_api_url.com/api", headers={}, json={})
 
     return response.json()
 
@@ -122,23 +80,23 @@ The MCP configuration in Cursor looks something like this:
 
 ## Other considerations
 
-This is of course the simplest possible way to set up an MCP Server and there are other ways to make this better. Key considerations are:
+This is of course the simplest possible way to set up an MCP Server and there are other ways to make this better. Some key considerations are:
 - **Schema Design**: In this example we don't define input parameters to our tool or what the output looks like. Adding this can help with both flexibility and consistency of our tool.
 - **Context Sensitivity**: Our current example just dumps all contact info into the context window for the model to handle. That's fine for a small dataset, but when producitonizing this we would want to include pagination, search, and filtering to prevent overwhelming the model.
-- **Error Handling**: This is a great to enable the agent to recover gracefully. For example, an error message like "invalid parameter X, expected string" can allow the agent to make a follow up tool call with the corrected input.
+- **Error Handling**: This is a great way to enable the agent to recover gracefully. For example, an error message like "invalid parameter X, expected string" can allow the agent to make a follow up tool call with the corrected input.
 - **Security & Access Control**: Ensure proper access controls are in place, especially for destructive API calls. You may want to ensure there is a human-in-the-loop where appropriate in your application.
+
+All that said, it's pretty awesome that for a dozen-ish lines of code we can create compelling AI experiences using our existing APIs.
     `,
     date: '2025-07-24T14:00:00Z',
     tags: ['MCP', 'AI', 'Development'],
-    featured: false
+    featured: true
   },
   {
     id: 'thoughts-on-vibe-coding',
     title: 'Thoughts on Vibe Coding',
     excerpt: 'My personal tips and tricks in the world of \~vibe\~ coding.',
     content: `
-# Thoughts on Vibe Coding
-
 “If you don’t learn to use AI, you’ll be replaced by AI”. \- Every CEO in 2025, probably.
 
 While I have no idea if or when that will happen, in case that statement does come to fruition I’ve been on a quest to make sure I don’t get replaced. One of the first bits of AI I’ve been using in my day-to-day is Cursor, among many other coding assistants I’ve played around with. I was hooked instantly and after burning through the free trial I now, somewhat begrudgingly, fork over twenty bucks a month for their Pro plan. In exchange, I am more productive coding than I ever have been before. Not to mention, it’s the most fun I’ve had coding in years. That praise isn’t to say it’s all been rainbows and unicorns, there are definitely a few lessons I’ve learned. That’s what this post is about. 

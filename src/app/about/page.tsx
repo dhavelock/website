@@ -27,13 +27,13 @@ export default function AboutPage() {
                   Hey, I’m Dylan. I started out as a software engineer and now work as a Solutions Engineer at Snyk, where I help engineering teams move fast without breaking things (or security).
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                  Most days, you’ll find me teaming up with customers -- digging into their challenges, sketching out what a solution could look like, and seeing it through from idea to implementation.
+                  Most days, you’ll find me teaming up with customers – digging into their challenges, sketching out solutions, and ensuring their success from first discovery to adoption.
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                  I also work side-by-side with our sales team, turning technical wins into business wins, all while building relationships that last longer than the contract.
+                  I also work side-by-side with our sales team, turning tech wins into business wins, all while building relationships that last longer than the contract.
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Outside of work, I’m usually writing about tech, poking around in the world of AI and machine learning, or training for my next triathlon here in Vancounver.
+                  Outside of work, I’m usually reading about the tech world, tinkering on side projects, or training for my next triathlon here in Vancounver.
                 </p>
               </div>
             </section>

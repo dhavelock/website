@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 import type { Components } from 'react-markdown'
 import { getPostById, formatDate } from '@/lib/posts'
 
@@ -110,6 +111,16 @@ export default async function PostPage({ params }: PostPageProps) {
     del: ({ children, ...props }) => (
       <del {...props} className="line-through text-gray-500 dark:text-gray-400">{children}</del>
     ),
+    video: ({ src, controls, muted, loop, className, ...props }) => (
+      <video 
+        {...props}
+        src={src}
+        controls={controls}
+        muted={muted}
+        loop={loop}
+        className={`max-w-full h-auto rounded-lg shadow-md my-4 ${className || ''}`}
+      />
+    ),
   }
 
   return (
@@ -170,6 +181,7 @@ export default async function PostPage({ params }: PostPageProps) {
               <div className="text-gray-700 dark:text-gray-300 leading-relaxed">
                 <ReactMarkdown 
                   remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeRaw]}
                   components={components}
                 >
                   {post.content}
