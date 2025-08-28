@@ -43,51 +43,93 @@ As AI technology continues to evolve, I'm excited about the possibilities. The k
     featured: true
   },
   {
-    id: 'effective-code-review-practices',
-    title: 'Effective Code Review Practices for Engineering Teams',
-    excerpt: 'Best practices I\'ve developed for conducting and participating in code reviews that actually improve code quality.',
+    id: 'mcp-server-for-dummies',
+    title: 'MCP Server for Dummies',
+    excerpt: '',
     content: `
-# Effective Code Review Practices for Engineering Teams
+# MCP Server for Dummies
 
-Code reviews are one of the most important practices in software development, yet they're often done poorly. Here are the practices I've found most effective.
+Everyone is chatting up a storm about MCP and the possibilities that it unlocks for the future. What I don't think everyone understands is just how easy it is to automate and _AI-ify_ existing experiences right now. This post walks through how we can take the traditional APIs we already have and create a delightful experiences.
 
-## Set Clear Expectations
+## Example: Interfacing with our CRM
 
-Before starting a review, ensure everyone understands the goals. Code reviews should focus on:
-- Code quality and maintainability
-- Security vulnerabilities
-- Performance considerations
-- Adherence to team standards
+<video 
+  src="https://s3.ca-central-1.amazonaws.com/dylanhavelock.com/media/crm_email_list_cursor.webm"
+  controls
+  muted
+  loop
+  className="rounded-lg shadow-md"
+/>
 
-## Use a Checklist
 
-I've found that using a consistent checklist helps ensure nothing is missed:
-- [ ] Does the code solve the intended problem?
-- [ ] Are there any obvious bugs or edge cases?
-- [ ] Is the code readable and well-documented?
-- [ ] Are there any security concerns?
-- [ ] Does the code follow team conventions?
+## How's it work?
 
-## Provide Constructive Feedback
+All you need is an MCP Client and a thin wrapper around your existing APIs -- the MCP Server. Then we plug the Server into the Client.
 
-Feedback should be specific, actionable, and kind. Instead of "this is wrong," try "consider using X pattern here because Y."
+You can either use an existing MCP Client, like Claude Desktop or Cursor, or your own application can serve as  the MCP Client.
 
-## Review in Small Chunks
+What's powerful is that you can easily leverage your existing product capabilities to create seemingly AI-native experiences with a relatively small amount of code.
 
-Large pull requests are harder to review effectively. I try to keep changes focused and manageable.
+## The details
 
-## Automate What You Can
+The following code snippet is the barebones of what you need to AI-ify existing APIs that you have.
 
-Use tools like ESLint, Prettier, and automated tests to catch common issues before review.
+~~~
+import requests
+from mcp.server.fastmcp import FastMCP
 
-## Follow Up
+mcp = FastMCP("My MCP Server")
 
-Code reviews shouldn't end when the PR is merged. Follow up to ensure feedback was understood and applied correctly.
+@mcp.tool()
+def my_mcp_tool():
+    """Detailed description about what this tool (in this case your API endpoint) does."""
+    
+    # The API endpoint you are wrapping
+    url = "https://your_api_url.com/api"
 
-These practices have significantly improved the quality of code in teams I've worked with.
+    # Fill in the necessary headers and body
+    data = {}
+    headers = {}
+
+    # Make the API request
+    response = requests.post(url, headers=headers, json=data)
+
+    return response.json()
+
+if __name__ == "__main__":
+    # Initialize and run the server
+    mcp.run(transport='stdio')
+~~~
+
+That's all it takes to interface with your own APIs using natural language, assuming you have an MCP Client to plug into ;).
+
+You can see the full code for the Hubspot CRM example here: https://github.com/dhavelock/crm-mcp-server.
+
+The MCP configuration in Cursor looks something like this:
+~~~
+{
+  "mcpServers": {
+    "crm-mcp-server": {
+      "command": "uv",
+      "args": ["--directory", "/absolute/path/to/crm-mcp-server", "run", "crm_mcp_server.py"],
+      "env": {
+        "HUBSPOT_API_TOKEN": "my-super-secret-hubspot-pat"
+      }
+    }
+  }
+}
+~~~
+
+## Other considerations
+
+This is of course the simplest possible way to set up an MCP Server and there are other ways to make this better. Key considerations are:
+- **Schema Design**: In this example we don't define input parameters to our tool or what the output looks like. Adding this can help with both flexibility and consistency of our tool.
+- **Context Sensitivity**: Our current example just dumps all contact info into the context window for the model to handle. That's fine for a small dataset, but when producitonizing this we would want to include pagination, search, and filtering to prevent overwhelming the model.
+- **Error Handling**: This is a great to enable the agent to recover gracefully. For example, an error message like "invalid parameter X, expected string" can allow the agent to make a follow up tool call with the corrected input.
+- **Security & Access Control**: Ensure proper access controls are in place, especially for destructive API calls. You may want to ensure there is a human-in-the-loop where appropriate in your application.
     `,
-    date: '2024-01-05T09:15:00Z',
-    tags: ['Code Review', 'Best Practices', 'Team Collaboration'],
+    date: '2025-07-24T14:00:00Z',
+    tags: ['MCP', 'AI', 'Development'],
     featured: false
   },
   {
